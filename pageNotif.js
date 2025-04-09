@@ -1,7 +1,7 @@
 // Put this inside tampermonkey 4chanX
 
 const initialInterval = 1000;
-const nextInterval = 15000;
+const nextInterval = 30000;
 const pageNotification = 10;
 
 if (Notification.permission !== "granted") {
