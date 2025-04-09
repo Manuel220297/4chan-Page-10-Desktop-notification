@@ -1,6 +1,7 @@
 // Put this inside tampermonkey 4chanX
 
-const notifyPageInterval = 10000;
+const initialInterval = 1000;
+const nextInterval = 5000;
 const pageNotification = 10;
 
 if (Notification.permission !== "granted") {
@@ -13,11 +14,13 @@ function notifyPage() {
 
     const currentPage = parseInt(pageCountEl.textContent.trim(), 10);
     if (currentPage === pageNotification && Notification.permission === "granted") {
-        new Notification("⚠️ Thread on Page 10", {
-            body: "This thread is on page 10 and might be pruned soon.",
+        new Notification(`⚠️ Thread on Page ${currentPage}`, {
+            body: `This thread is on page ${currentPage} and might be pruned soon.`,
             icon: "https://static.4chan.org/image/favicon.ico"
         });
     }
+
 }
 
-setInterval(notifyPage, notifyPageInterval);
+setTimeout(notifyPage, initialInterval);
+setInterval(notifyPage, nextInterval);
